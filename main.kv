@@ -1,0 +1,71 @@
+<Gerenciador>: 
+    Menu: 
+        name: 'menu'
+    Listagem:
+        name: 'listagem'
+    Conversor:
+        name: 'conversor'
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 200
+        spacing: 50
+        Button:
+            text: 'Consultar cotaçao'
+            on_release: app.root.current = 'listagem'
+        Button:
+            text: 'Conversor de moedas'
+            on_release: app.root.current = 'conversor'
+        Button:
+            text: 'Sair'
+            on_release: app.stop()
+
+<Listagem>:
+    BoxLayout:
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Consultar cotaçao'
+                    on_release: app.root.current = 'menu'
+        GridLayout:
+            cols: 1
+    
+            Label:
+                id: "moeda1"
+                text: "Dolar em R$5,16"
+            Label:
+                id: "moeda2"
+                text: "Euro em R$5,09"
+            Label:
+                id: "moeda3"
+                text: "Bitcoin em R$19,224.42"
+
+<Conversor>: 
+    BoxLayout:
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Conversor de moedas'
+                    on_release: app.root.current = 'menu'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 200
+        spacing: 20
+
+        Label:
+            text: "Moeda Origem"
+        TextInput:
+            id: moeda_origem
+
+        Label:
+            text: "Moeda Destino"
+        TextInput: 
+            id: moeda_destino
+
+        Button: 
+            text: 'Converter'
+            on_release: root.converter_moeda()
+
